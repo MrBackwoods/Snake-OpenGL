@@ -12,9 +12,6 @@
 const int gridSize = 10;
 const int windowSize = 420;
 
-// Sound disabled
-bool playSounds = false;
-
 // Game speed and state variables
 float updateDelay = 0.2f;
 float lastFrameTime = 0;
