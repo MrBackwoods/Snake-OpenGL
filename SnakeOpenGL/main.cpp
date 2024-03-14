@@ -3,7 +3,6 @@
 #include <time.h>
 #include <vector>
 #include <iostream>
-#include <windows.h>
 #include <thread>
 
 
@@ -37,18 +36,6 @@ int appleY = 5;
 #pragma endregion
 
 #pragma region Gameplay functions
-
-// Function for playing sounds
-void playBeep(int frequency, int duration)
-{
-    if (playSounds)
-    {
-        std::thread([frequency, duration] {
-            Beep(frequency, duration);
-            std::this_thread::sleep_for(std::chrono::milliseconds(duration + 200));
-            }).detach();
-    }
-}
 
 // Function for setting apple position
 void placeApple()
@@ -88,7 +75,6 @@ bool checkCollisionWithSelf()
     {
         if (snakeX == snakeBody[i].first && snakeY == snakeBody[i].second) 
         {
-            playBeep(300, 1000);
             return true;
         }
     }
@@ -137,7 +123,6 @@ void update(float deltaTime)
         if (snakeX == appleX && snakeY == appleY) 
         {
             increaseLength = true;
-            playBeep(1000, 500);
             placeApple();
         }
         else 
